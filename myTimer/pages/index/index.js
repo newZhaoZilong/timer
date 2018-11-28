@@ -10,7 +10,9 @@ Page({
   },
   onLoad(){
     console.log('nihao');
-      var timer = new Timer({
+       this.timer = new Timer({
+        duration:180,
+        joinStr:':',
         callBack: (daojishi,resolve)=>{
           this.setData({
             daojishi: daojishi
@@ -30,21 +32,12 @@ Page({
     // console.log(time_str3);
     // console.log(time_str4);
     // console.log(time_str5);
-    timer.start();
+    
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  stop:function(){
+    this.timer.stop();
   },
-
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+  start:function(){
+    this.timer.start();
+  },
 })

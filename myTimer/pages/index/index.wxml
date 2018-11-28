@@ -1,2 +1,4 @@
 <!--index.wxml-->
 <view>{{daojishi}}</view>
+<button type="primary" bindtap="stop">暂停</button>
+<button type="primary" bindtap="start">重新开始</button>
