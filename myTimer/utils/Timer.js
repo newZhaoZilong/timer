@@ -7,12 +7,18 @@ class Timer {
     this.joinStr = initObj.joinStr; //倒计时数字之间的字符串
   }
 
-  start() {
+  start(startTime) {
     console.log('执行start');
     if (this.isStop) {
       this.isStop = false;
     }
+    //这里只能避免简单的连续点击，不能避免快速的连续点击多次
+    //如果是这种情况可以在点击的时候设置button为不可点击状态
     clearTimeout(this.timeoutId);
+
+    if (startTime){
+      this.duration = startTime;
+    }
 
     var durationStr = this.durationToStr(this.duration, this.joinStr);
     this.callBack(durationStr, () => {
@@ -25,7 +31,7 @@ class Timer {
         var offsetTime = this.lastTime ? (currentTime - this.lastTime - this.interval) : 0;
         this.lastTime = currentTime;
         var correctTime = (this.interval - offsetTime > 0) ? (this.interval - offsetTime) : 0;
-        
+
         console.log(`当前时间:${currentTime} 偏移时间:${offsetTime} 校准后的延时时间${correctTime}`);
         if (this.isStop) {
           console.log('暂停')
