@@ -9,46 +9,41 @@ class Timer {
 
   start() {
     console.log('执行start');
-    this.isStop = false;
+    if (this.isStop) {
+      this.isStop = false;
+    }
     clearTimeout(this.timeoutId);
-
-
 
     var durationStr = this.durationToStr(this.duration, this.joinStr);
     this.callBack(durationStr, () => {
-      
       if (this.duration <= 0) {
+        console.log('计时结束');
         this.complete && this.complete();
       } else {
         //获取当前时间的毫秒数
         var currentTime = Date.now();
-        console.log(`${durationStr}===>${currentTime}`);
-
         var offsetTime = this.lastTime ? (currentTime - this.lastTime - this.interval) : 0;
         this.lastTime = currentTime;
-        console.log('offsetTime', offsetTime);
-
         var correctTime = (this.interval - offsetTime > 0) ? (this.interval - offsetTime) : 0;
-        console.log('correctTime', correctTime);
+        
+        console.log(`当前时间:${currentTime} 偏移时间:${offsetTime} 校准后的延时时间${correctTime}`);
         if (this.isStop) {
           console.log('暂停')
           this.isStop = false;
-        }else{
+        } else {
           this.timeoutId = setTimeout(() => {
             this.duration--;
             this.start();
           }, correctTime);
         }
-
       }
-
     });
   }
-  stop(){
+  stop() {
+    console.log('执行start');
     this.isStop = true;
     this.lastTime = null;
     clearTimeout(this.timeoutId);
-    
   }
   durationToStr(dt, intervalStr = ' ') {
     var hour = parseInt(dt / 3600);
