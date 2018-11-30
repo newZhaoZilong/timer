@@ -1,5 +1,5 @@
 <!--index.wxml-->
 <view>倒计时:{{daojishi}}</view>
 <button type="primary" bindtap="start">开始</button>
-<button type="primary" bindtap="stop">暂停</button>
+<button type="primary" bindtap="pause">暂停</button>
 
