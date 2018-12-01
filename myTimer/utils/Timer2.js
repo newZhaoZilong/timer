@@ -31,7 +31,7 @@ class Timer {
         clearInterval(this.intervalId);
         this.complete && this.complete();
       }
-    }, this.interval*1000)
+    }, this.interval * 1000)
   }
   pause() {
     clearInterval(this.intervalId);

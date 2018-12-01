@@ -9,9 +9,6 @@ class Timer {
 
   start(startTime) {
     console.log('执行start');
-    if (this.isStop) {
-      this.isStop = false;
-    }
     //这里只能避免简单的连续点击，不能避免快速的连续点击多次
     //如果是这种情况可以在点击的时候设置button为不可点击状态
     clearTimeout(this.timeoutId);
@@ -47,7 +44,6 @@ class Timer {
   }
   stop() {
     console.log('执行start');
-    this.isStop = true;
     this.lastTime = null;
     clearTimeout(this.timeoutId);
   }
