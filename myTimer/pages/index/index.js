@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const Timer = require('../../utils/Timer2.js');
+const Timer = require('../../utils/Timer.js');
 Page({
   onLoad() {
     //创建一个计时器
