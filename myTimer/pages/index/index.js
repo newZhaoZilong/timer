@@ -8,9 +8,13 @@ Page({
     this.timer = new Timer({
       duration: 30,
       joinStr: ':',
-      callBack: (daojishi) => {
+      callBack: (res) => {
+        console.log(res);
         this.setData({
-          daojishi: daojishi
+          daojishi0: res.time,
+          daojishi1: res.list.join(' '),
+          daojishi2: res.list.join(':'),
+          daojishi3: `${res.list[0]}时${res.list[1]}分${res.list[2]}秒`,
         })
       },
       complete: () => {
